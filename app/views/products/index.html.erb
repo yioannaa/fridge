@@ -29,6 +29,7 @@
   <thead>
     <tr>
       <th>Smakołyki</th>
+<th>Zdobywca smakołyków</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,9 +38,11 @@
     <% @products_todo.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%=  product.user.email%></td>
         <td><%= link_to 'Zmień', edit_product_path(product) %></td>
         <td><%= link_to 'Nie chcę', product, method: :delete, data: { confirm: 'Na pewno nie chcesz?' } %></td>
         <td><%= link_to 'Kupiłam', buy_product_path(product), method: :post, data: { confirm: 'Na pewno kupiłaś?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
