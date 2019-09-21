@@ -1,15 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [ :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
-  end
-
-  # GET /products/1
-  # GET /products/1.json
-  def show
   end
 
   # GET /products/new
@@ -60,6 +55,11 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # BUY products/1
+  # def buy
+  #
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
