@@ -1,52 +1,57 @@
 <p id="notice"><%= notice %></p>
+<div class="my_info">
+  <div>
+  <h1>Moja Lodówka</h1>
+</div>
+  <div>
+    <div class="fridge-outline">
+      <table>
+        <tbody>
+          <% @products_fridge.each do |product| %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= link_to 'Zmień', edit_product_path(product) %></td>
+              <td><%= link_to 'Zjedzone!', product, method: :delete, data: { confirm: 'Na pewno zjadłeś/aś?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="fridge-leg left"></div>
+      <div class="fridge-leg right"></div>
+    </div>
+</div>
 
-<h1>Moja lodówka</h1>
+<div class="my_info">
+  <div>
+    <h1>Lista zakupów, żarłoku!</h1>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Smakołyki</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Smakołyki</th>
+            <th>Zdobywca smakołyku</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @products_fridge.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= link_to 'Zmień', edit_product_path(product) %></td>
-        <td><%= link_to 'Zjedzone', product, method: :delete, data: { confirm: 'Na pewno zjadłaś?' } %></td>
+        <tbody>
+          <% @products_todo.each do |product| %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= product.user.email %></td>
+              <td><%= link_to 'Zmień', edit_product_path(product) %></td>
+              <td><%= link_to 'Nie chcę', product, method: :delete, data: { confirm: 'Na pewno nie chcesz?' } %></td>
+              <td><%= link_to 'Kupione', buy_product_path(product), method: :post, data: { confirm: 'Na pewno kupiłeś?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <br>
+      <%= link_to 'Mam ochotę na coś dobrego', new_product_path %>
+      </div>
 
-<br>
-<h1>Lista zakupów, żarłoku!</h1>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Smakołyki</th>
-<th>Zdobywca smakołyków</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products_todo.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%=  product.user.email%></td>
-        <td><%= link_to 'Zmień', edit_product_path(product) %></td>
-        <td><%= link_to 'Nie chcę', product, method: :delete, data: { confirm: 'Na pewno nie chcesz?' } %></td>
-        <td><%= link_to 'Kupiłam', buy_product_path(product), method: :post, data: { confirm: 'Na pewno kupiłaś?' } %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'Mam ochotę na coś nowego', new_product_path %>
