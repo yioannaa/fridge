@@ -9,6 +9,8 @@
   </head>
 
   <body>
+<% if user_signed_in? then%> "Cześć żarłoku <%=current_user.email%>"
+<%end %>
     <%= yield %>
   </body>
 </html>
