@@ -10,7 +10,7 @@
 
   <body>
 <% if user_signed_in? then%> "Cześć żarłoku <%=current_user.email%>"  
-        <%= button_to 'Wyjdź z lodówki',  destroy_user_session_path, method: :delete, data: { confirm: 'Na pewno cgcesz opuścić tę wspaniałą lodówkę?' } %>
+        <%= button_to 'Wyjdź z lodówki',  destroy_user_session_path, method: :delete, data: { confirm: 'Na pewno chcesz opuścić tę wspaniałą lodówkę?' } %>
 <%end %>
     <%= yield %>
   </body>
