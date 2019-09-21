@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to root_path, notice: 'Product was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Pyszne żarcie! Dobry plan!.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -50,9 +50,14 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+notice = if @product.bought? then 
+"Na zdrowie!"
+else
+"No trudno"
+end
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: notice }
       format.json { head :no_content }
     end
   end
@@ -61,7 +66,7 @@ class ProductsController < ApplicationController
    def buy 
 @product.bought =  true
 @product.save
-redirect_to products_url, notice: 'Products moved to bought.'
+redirect_to products_url, notice: 'Będzie pysznie :D.'
 
   
   end

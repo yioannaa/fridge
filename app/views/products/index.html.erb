@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fridge</h1>
+<h1>Moja lodówka</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Smakołyki</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,21 +14,21 @@
     <% @products_fridge.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Buy', buy_product_path(product), method: :post, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Zmień', edit_product_path(product) %></td>
+        <td><%= link_to 'Zjedzone', product, method: :delete, data: { confirm: 'Na pewno zjadłaś?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<h1>Shopping List</h1>
+<h1>Lista zakupów</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Smakołyki</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,13 +37,13 @@
     <% @products_todo.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Buy', buy_product_path(product), method: :post, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Zmień', edit_product_path(product) %></td>
+        <td><%= link_to 'Nie chcę', product, method: :delete, data: { confirm: 'Na pewno nie chcesz?' } %></td>
+        <td><%= link_to 'Kupiłam', buy_product_path(product), method: :post, data: { confirm: 'Na pewno kupiłaś?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'Mam ochotę na coś nowego', new_product_path %>
