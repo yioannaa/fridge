@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [ :edit, :update, :destroy]
+  before_action :set_product, only: [ :edit, :update, :destroy, :buy]
 
   # GET /products
   # GET /products.json
@@ -57,9 +57,13 @@ class ProductsController < ApplicationController
   end
 
   # BUY products/1
-  # def buy
-  #
-  # end
+   def buy 
+@product.bought =  true
+@product.save
+redirect_to products_url, notice: 'Products moved to bought.'
+
+  
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
