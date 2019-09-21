@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products_fridge = Product.where(bought: true)
+@products_todo = Product.where(bought: false)
   end
 
   # GET /products/new
